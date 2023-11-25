@@ -11,6 +11,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { BannerComponent } from './shared/banner/banner.component';
 import { CardComponent } from './shared/card/card.component';
+import { ContainerComponent } from './shared/container/container.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { CardComponent } from './shared/card/card.component';
     FooterComponent,
     BannerComponent,
     CardComponent,
+    ContainerComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
