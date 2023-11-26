@@ -1,9 +1,13 @@
 <mat-card class="card-busca">
-  <img mat-card-image src="assets/imagens/Veneza.png" alt="Veneza" />
+  <img
+    mat-card-image
+    src="{{ passagem.imagem }}"
+    alt="{{ passagem.destino }}"
+  />
   <mat-card-content>
     <ul>
-      <li>Veneza</li>
-      <li>R$ 500</li>
+      <li>{{ passagem.destino }}</li>
+      <li>R$ {{ passagem.preco }}</li>
     </ul>
   </mat-card-content>
   <mat-card-actions>
