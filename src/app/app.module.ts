@@ -27,6 +27,7 @@ import { CardBuscaComponent } from './shared/card-busca/card-busca.component';
 import { CardDepoimentoComponent } from './shared/card-depoimento/card-depoimento.component';
 import { FormBuscaComponent } from './shared/form-busca/form-busca.component';
 import { ModalComponent } from './shared/modal/modal.component';
+import { PromocaoComponent } from './pages/home/promocao/promocao.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ModalComponent } from './shared/modal/modal.component';
     CardDepoimentoComponent,
     FormBuscaComponent,
     ModalComponent,
+    PromocaoComponent,
   ],
   imports: [
     BrowserModule,
