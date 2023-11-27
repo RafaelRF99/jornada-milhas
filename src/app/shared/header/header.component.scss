@@ -1,19 +1,33 @@
 .app-header {
+  width: 100%;
+
   button {
     margin: 0 16px;
+  }
+
+  .content {
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 6rem;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1rem;
   }
 
   .spacer {
     flex: 1 1 auto;
   }
 
-  .mat-toolbar {
-    background-color: #000;
-    color: #fff;
-    padding: 0 6rem;
-  }
-
   .mat-mdc-outlined-button:not(:disabled) {
     border-color: #fff;
+  }
+}
+
+@media (max-width: 990px) {
+  .spacer {
+    display: none;
   }
 }
