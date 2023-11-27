@@ -4,3 +4,9 @@ export interface IPromocao {
   imagem: string;
   preco: number;
 }
+
+export interface IUnidadeFederativa {
+  id: number;
+  nome: string;
+  sigla: string;
+}
