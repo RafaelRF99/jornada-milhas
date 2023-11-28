@@ -42,6 +42,10 @@ export class CadastroComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(5)]),
       ],
       senhaCheck: [null],
+      terms: [
+        null,
+        Validators.compose([Validators.required, Validators.requiredTrue]),
+      ],
     });
   }
 

@@ -10,3 +10,9 @@ export interface IUnidadeFederativa {
   nome: string;
   sigla: string;
 }
+
+export interface IEstado {
+  id: number;
+  nome: string;
+  sigla: string;
+}
