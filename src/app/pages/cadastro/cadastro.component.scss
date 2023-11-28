@@ -1,18 +1,14 @@
 .cadastro-component {
-  min-height: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  margin-block: 5rem;
+
   .card-content {
     max-width: 600px;
     width: 100%;
-
-    // mat-card-content {
-    //   display: flex;
-    //   flex-direction: column;
-    //   justify-content: center;
-    // }
+    box-shadow: none;
 
     .name {
       mat-form-field {
