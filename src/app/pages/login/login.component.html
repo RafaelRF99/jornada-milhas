@@ -10,19 +10,57 @@
       <mat-card-header>
         <mat-card-title>Login</mat-card-title>
       </mat-card-header>
-      <form>
+      <form [formGroup]="formulario">
         <mat-card-content>
           <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
-            <input type="email" matInput placeholder="Digite seu email..." />
+            <input
+              type="email"
+              matInput
+              autocomplete="username"
+              placeholder="Digite seu email..."
+              formControlName="email"
+            />
+            <mat-error
+              *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched"
+            >
+              *Campo obrigatório
+            </mat-error>
+            <mat-error
+              *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched"
+              >*Formato email inválido!</mat-error
+            >
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Digite sua senha..." />
+            <input
+              type="password"
+              autocomplete="current-password"
+              matInput
+              placeholder="Digite sua senha..."
+              formControlName="pass"
+            />
+            <mat-error
+              *ngIf="formulario.get('pass')?.errors?.['required'] && formulario.get('pass')?.touched"
+            >
+              *Campo obrigatório
+            </mat-error>
+            <mat-error
+              *ngIf="formulario.get('pass')?.errors?.['minlength'] && formulario.get('pass')?.touched"
+            >
+              *Minímo de 8 caracteres
+            </mat-error>
           </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button color="primary">ACESSAR MINHA CONTA</button>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="submit()"
+            [disabled]="!formulario.valid"
+          >
+            ACESSAR MINHA CONTA
+          </button>
         </mat-card-actions>
         <p>
           Ainda não possui conta?
