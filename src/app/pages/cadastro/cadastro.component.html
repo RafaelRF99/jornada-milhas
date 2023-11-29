@@ -122,18 +122,18 @@
                 >*Cidade Inválida</mat-error
               >
             </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Estado</mat-label>
-              <input type="string" matInput formControlName="estado" />
-              <mat-error
-                *ngIf="formulario.get('estado')?.errors?.['required'] && formulario.get('estado')?.touched"
-                >*Campo obrigatório</mat-error
-              >
-              <mat-error
-                *ngIf="formulario.get('estado')?.errors?.['minlength'] && formulario.get('estado')?.touched"
-                >*Estado Inválido</mat-error
-              >
-            </mat-form-field>
+            <app-dropdown-uf
+              label="Estado"
+              [control]="formBuscaService.obterControle('origem')"
+            />
+            <mat-error
+              *ngIf="formulario.get('estado')?.errors?.['required'] && formulario.get('estado')?.touched"
+              >*Campo obrigatório</mat-error
+            >
+            <mat-error
+              *ngIf="formulario.get('estado')?.errors?.['required'] && formulario.get('estado')?.touched"
+              >*Campo obrigatório</mat-error
+            >
           </div>
           <div>
             <mat-form-field appearance="outline">
@@ -150,8 +150,7 @@
               >
               <mat-error
                 *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched"
-                >*Não compativel com formato email.
-                <b>exemplo@hotmail.com</b></mat-error
+                >*Não compativel com formato email.</mat-error
               >
             </mat-form-field>
             <mat-form-field appearance="outline">

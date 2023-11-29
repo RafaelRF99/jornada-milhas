@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,7 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CadastroComponent implements OnInit {
   formulario!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    public formBuscaService: FormBuscaService
+  ) {}
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -28,15 +32,14 @@ export class CadastroComponent implements OnInit {
         null,
         Validators.compose([Validators.required, Validators.minLength(3)]),
       ],
-      estado: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(2)]),
-      ],
       email: [
         null,
         Validators.compose([Validators.required, Validators.email]),
       ],
-      emailCheck: [null],
+      emailCheck: [
+        null,
+        Validators.compose([Validators.required, Validators.email]),
+      ],
       senha: [
         null,
         Validators.compose([Validators.required, Validators.minLength(5)]),
