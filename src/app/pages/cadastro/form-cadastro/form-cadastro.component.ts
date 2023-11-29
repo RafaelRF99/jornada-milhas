@@ -8,6 +8,7 @@ import {
 import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { ICadastro, IUnidadeFederativa } from 'src/app/core/types/type';
+import { FormValidation } from './form.validation';
 
 @Component({
   selector: 'app-form-cadastro',
@@ -53,13 +54,23 @@ export class FormCadastroComponent {
       ],
       emailCheck: [
         null,
-        Validators.compose([Validators.required, Validators.email]),
+        Validators.compose([
+          Validators.required,
+          Validators.email,
+          FormValidation.equalTo('email'),
+        ]),
       ],
       senha: [
         null,
         Validators.compose([Validators.required, Validators.minLength(5)]),
       ],
-      senhaCheck: [null, Validators.compose([Validators.required])],
+      senhaCheck: [
+        null,
+        Validators.compose([
+          Validators.required,
+          FormValidation.equalTo('senha'),
+        ]),
+      ],
       terms: [
         null,
         Validators.compose([Validators.required, Validators.requiredTrue]),

@@ -156,6 +156,10 @@
                 formControlName="emailCheck"
                 autocomplete="username"
               />
+              <mat-error
+                *ngIf="formulario.get('emailCheck')?.errors?.['equalTo']"
+                >*Email divergentes.</mat-error
+              >
             </mat-form-field>
           </div>
           <div>
@@ -184,6 +188,10 @@
                 formControlName="senhaCheck"
                 matInput
               />
+              <mat-error
+                *ngIf="formulario.get('senhaCheck')?.errors?.['equalTo']"
+                >*Senha divergentes.</mat-error
+              >
             </mat-form-field>
           </div>
         </div>
