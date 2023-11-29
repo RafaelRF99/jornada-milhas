@@ -36,6 +36,7 @@ import { DropdownUfComponent } from './shared/form-busca/dropdown-uf/dropdown-uf
 import { BotaoControleComponent } from './shared/botao-controle/botao-controle.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { FormCadastroComponent } from './pages/cadastro/form-cadastro/form-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
     BotaoControleComponent,
     LoginComponent,
     CadastroComponent,
+    FormCadastroComponent,
   ],
   imports: [
     BrowserModule,
