@@ -22,12 +22,21 @@
         <div class="inform">
           <div class="date">
             <mat-form-field appearance="outline">
-              <mat-label>Data de nascimento</mat-label>
-              <input type="date" matInput formControlName="nascimento" />
+              <mat-label>Data nascimento</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="nascimento"
+              />
               <mat-error
                 *ngIf="formulario.get('nascimento')?.errors?.['required'] && formulario.get('nascimento')?.touched"
                 >*Campo obrigatório</mat-error
               >
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
           <div class="sexo">
@@ -185,8 +194,9 @@
           </div>
         </div>
         <div>
-          <input type="checkbox" formControlName="terms" />
-          <p>Li e aceito os termos e condições deste cadastro.</p>
+          <mat-checkbox class="example-margin" formControlName="terms">
+            Li e aceito os termos e condições deste cadastro.
+          </mat-checkbox>
         </div>
         <div class="botao">
           <button
