@@ -30,14 +30,19 @@ export class DropdownUfComponent implements OnInit {
     );
   }
 
-  filtrarUfs(value: string): IUnidadeFederativa[] {
-    const valorFiltrado = value?.toLowerCase();
+  filtrarUfs(value: string | IUnidadeFederativa): IUnidadeFederativa[] {
+    const nameUf = typeof value === 'string' ? value : value?.nome;
     if (!this.unidadeFederativa) {
       return [];
     }
+    const valorFiltrado = nameUf?.toLowerCase();
     const result = this.unidadeFederativa.filter((estado) =>
       estado.nome.toLowerCase().includes(valorFiltrado)
     );
     return result;
+  }
+
+  displayFn(estado: IUnidadeFederativa): string {
+    return estado && estado.nome ? estado.nome : '';
   }
 }
