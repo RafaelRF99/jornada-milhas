@@ -16,3 +16,15 @@ export interface IEstado {
   nome: string;
   sigla: string;
 }
+
+export interface ICadastro {
+  nome: string;
+  nascimento: Date;
+  cpf: string;
+  telefone: string;
+  email: string;
+  senha: string;
+  genero: string;
+  cidade: string;
+  estado: IEstado;
+}

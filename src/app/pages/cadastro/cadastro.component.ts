@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormBuscaService } from 'src/app/core/services/form-busca.service';
+import { CadastroService } from 'src/app/core/services/cadastro.service';
+import { FormularioService } from 'src/app/core/services/formulario.service';
+import { ICadastro } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-cadastro',
@@ -8,51 +9,26 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
   styleUrls: ['./cadastro.component.scss'],
 })
 export class CadastroComponent implements OnInit {
-  formulario!: FormGroup;
-
   constructor(
-    private formBuilder: FormBuilder,
-    public formBuscaService: FormBuscaService
+    private service: FormularioService,
+    private cadastroService: CadastroService
   ) {}
 
-  ngOnInit(): void {
-    this.formulario = this.formBuilder.group({
-      name: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(8)]),
-      ],
-      nascimento: [null, Validators.required],
-      sexo: [null, Validators.required],
-      cpf: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(11)]),
-      ],
-      telefone: [null, Validators.compose([Validators.required])],
-      cidade: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(3)]),
-      ],
-      email: [
-        null,
-        Validators.compose([Validators.required, Validators.email]),
-      ],
-      emailCheck: [
-        null,
-        Validators.compose([Validators.required, Validators.email]),
-      ],
-      senha: [
-        null,
-        Validators.compose([Validators.required, Validators.minLength(5)]),
-      ],
-      senhaCheck: [null],
-      terms: [
-        null,
-        Validators.compose([Validators.required, Validators.requiredTrue]),
-      ],
-    });
-  }
+  ngOnInit(): void {}
 
-  submit() {
-    console.log(this.formulario.value);
+  cadastrar() {
+    const formCadastro = this.service.getCadastro();
+    if (formCadastro?.valid) {
+      const novoCadastro = formCadastro.getRawValue() as ICadastro;
+      this.cadastroService.cadastrar(novoCadastro).subscribe({
+        next: (value) => {
+          console.log(value);
+        },
+        error: (value) => {
+          console.log(value);
+        },
+      });
+    }
+    console.log('Cadastro realizado com sucesso!');
   }
 }

@@ -8,13 +8,13 @@
         <div class="name">
           <mat-form-field appearance="outline">
             <mat-label>Nome Completo</mat-label>
-            <input type="text" matInput formControlName="name" />
+            <input type="text" matInput formControlName="nome" />
             <mat-error
-              *ngIf="formulario.get('name')?.errors?.['required'] && formulario.get('name')?.touched"
+              *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched"
               >*Campo obrigatório</mat-error
             >
             <mat-error
-              *ngIf="formulario.get('name')?.errors?.['minlength']  && formulario.get('name')?.touched"
+              *ngIf="formulario.get('nome')?.errors?.['minlength']  && formulario.get('nome')?.touched"
               >*Nome inválido</mat-error
             >
           </mat-form-field>
@@ -46,8 +46,8 @@
                 <input
                   type="radio"
                   value="feminino"
-                  name="sexo"
-                  formControlName="sexo"
+                  name="genero"
+                  formControlName="genero"
                 />
                 <label>Feminino</label>
               </div>
@@ -55,8 +55,8 @@
                 <input
                   type="radio"
                   value="masculino"
-                  name="sexo"
-                  formControlName="sexo"
+                  name="genero"
+                  formControlName="genero"
                 />
                 <label>Masculino</label>
               </div>
@@ -64,8 +64,8 @@
                 <input
                   type="radio"
                   value="na"
-                  name="sexo"
-                  formControlName="sexo"
+                  name="genero"
+                  formControlName="genero"
                 />
                 <mat-error
                   *ngIf="formulario.get('sexo')?.errors?.['required'] && formulario.get('sexo')?.touched"
@@ -98,7 +98,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Telefone</mat-label>
-              <input type="string" matInput formControlName="telefone" />
+              <input type="tel" matInput formControlName="telefone" />
               <mat-error
                 *ngIf="formulario.get('telefone')?.errors?.['required'] && formulario.get('telefone')?.touched"
                 >*Campo obrigatório</mat-error
@@ -112,7 +112,7 @@
           <div>
             <mat-form-field appearance="outline">
               <mat-label>Cidade</mat-label>
-              <input type="string" matInput formControlName="cidade" />
+              <input type="text" matInput formControlName="cidade" />
               <mat-error
                 *ngIf="formulario.get('cidade')?.errors?.['required'] && formulario.get('cidade')?.touched"
                 >*Campo obrigatório</mat-error
@@ -122,18 +122,13 @@
                 >*Cidade Inválida</mat-error
               >
             </mat-form-field>
-            <app-dropdown-uf
-              label="Estado"
-              [control]="formBuscaService.obterControle('origem')"
-            />
-            <mat-error
-              *ngIf="formulario.get('estado')?.errors?.['required'] && formulario.get('estado')?.touched"
-              >*Campo obrigatório</mat-error
-            >
-            <mat-error
-              *ngIf="formulario.get('estado')?.errors?.['required'] && formulario.get('estado')?.touched"
-              >*Campo obrigatório</mat-error
-            >
+            <div class="estado">
+              <app-dropdown-uf label="Estado" [control]="estadoControl" />
+              <mat-error
+                *ngIf="formulario.get('estado')?.errors?.['required'] && formulario.get('estado')?.touched"
+                >*Campo obrigatório</mat-error
+              >
+            </div>
           </div>
           <div>
             <mat-form-field appearance="outline">

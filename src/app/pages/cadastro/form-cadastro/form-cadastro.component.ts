@@ -1,6 +1,13 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { FormBuscaService } from 'src/app/core/services/form-busca.service';
+import { FormularioService } from 'src/app/core/services/formulario.service';
+import { ICadastro, IUnidadeFederativa } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-form-cadastro',
@@ -9,20 +16,27 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 })
 export class FormCadastroComponent {
   formulario!: FormGroup;
+  @Output() acaoClique: EventEmitter<ICadastro> = new EventEmitter<ICadastro>();
+
+  estadoControl = new FormControl<IUnidadeFederativa | null>(
+    null,
+    Validators.required
+  );
 
   constructor(
     private formBuilder: FormBuilder,
-    public formBuscaService: FormBuscaService
+    public formBuscaService: FormBuscaService,
+    private formularioService: FormularioService
   ) {}
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      name: [
+      nome: [
         null,
         Validators.compose([Validators.required, Validators.minLength(8)]),
       ],
       nascimento: [null, Validators.required],
-      sexo: [null, Validators.required],
+      genero: [null, Validators.required],
       cpf: [
         null,
         Validators.compose([Validators.required, Validators.minLength(11)]),
@@ -32,6 +46,7 @@ export class FormCadastroComponent {
         null,
         Validators.compose([Validators.required, Validators.minLength(3)]),
       ],
+      estado: this.estadoControl,
       email: [
         null,
         Validators.compose([Validators.required, Validators.email]),
@@ -50,9 +65,11 @@ export class FormCadastroComponent {
         Validators.compose([Validators.required, Validators.requiredTrue]),
       ],
     });
+
+    this.formularioService.setCadastros(this.formulario);
   }
 
   submit() {
-    console.log(this.formulario.value);
+    this.acaoClique.emit();
   }
 }
